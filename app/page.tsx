@@ -61,7 +61,9 @@ export default function HomePage() {
           <div>
             <FilterPanel />
           </div>
-          <AgentGrid />
+          <div>
+            <AgentGrid />
+          </div>
         </div>
       </div>
     </motion.div>
