@@ -1,8 +1,31 @@
-'use client';
+"use client";
 
-import { ThemeProvider as NextThemesProvider } from 'next-themes';
-import { type ThemeProviderProps } from 'next-themes/dist/types';
+import {
+  ThemeProvider as NextThemesProvider,
+  type Attribute,
+} from "next-themes";
 
-export default function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-  return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
+export default function ThemeProvider({
+  children,
+  attribute,
+  defaultTheme,
+  enableSystem,
+  disableTransitionOnChange,
+}: {
+  children: React.ReactNode;
+  attribute: Attribute | Attribute[] | undefined;
+  defaultTheme: string;
+  enableSystem: boolean;
+  disableTransitionOnChange: boolean;
+}) {
+  return (
+    <NextThemesProvider
+      attribute={attribute}
+      defaultTheme={defaultTheme}
+      enableSystem={enableSystem}
+      disableTransitionOnChange={disableTransitionOnChange}
+    >
+      {children}
+    </NextThemesProvider>
+  );
 }

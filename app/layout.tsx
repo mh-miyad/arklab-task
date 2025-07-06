@@ -1,5 +1,6 @@
 import ReduxProvider from "@/components/providers/ReduxProvider";
 import NextAuthSessionProvider from "@/components/providers/SessionProvider";
+import ThemeProvider from "@/components/providers/ThemeProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -36,9 +37,16 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <NextAuthSessionProvider>
-          <ReduxProvider>{children}</ReduxProvider>
-        </NextAuthSessionProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NextAuthSessionProvider>
+            <ReduxProvider>{children}</ReduxProvider>
+          </NextAuthSessionProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
